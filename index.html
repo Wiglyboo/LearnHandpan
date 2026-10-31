@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LearnHandpan</title>
+<meta name="description" content="Simple handpan songs with pad numbers, left and right hands, and a built-in player. Start with D Kurd 9.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=JetBrains+Mono:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+/* Layout: one narrow column. Wordmark, a short intro with the pad map drawn as a handpan, then the song list. Paper and brass, matching the song sheets. */
+:root{
+  --paper:#fdfcfa;
+  --desk:#e9e6e1;
+  --ink:#1b1a1d;
+  --ink-dim:#5f5a55;
+  --brass:#8a5a14;
+  --rule:#d8d3cc;
+  --display:"Gloock", Georgia, serif;
+  --body:"Newsreader", Georgia, serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.mark{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:lowercase;color:var(--ink-dim)}
+.mark b{color:var(--brass);font-weight:600}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,9vw,4.4rem);line-height:.98;margin:18px 0 16px;text-wrap:balance}
+.lede{max-width:52ch;margin:0;color:var(--ink-dim);font-size:1.1rem}
+.pan{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin-top:36px;padding:22px;background:var(--paper);border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.pan svg{width:150px;height:150px;display:block}
+.pan h2,.songs h2{font-family:var(--mono);font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 8px}
+.pan p{margin:0;max-width:44ch;font-size:1rem}
+.pan p + p{margin-top:8px}
+.pan code{font-family:var(--mono);font-size:.85rem;color:var(--brass);font-weight:600}
+.songs{margin-top:44px}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.list li{border-bottom:1px solid var(--rule)}
+.list a{display:grid;grid-template-columns:2.4rem 1fr auto;gap:4px 14px;align-items:baseline;padding:18px 4px;color:inherit;text-decoration:none}
+.list a:hover .title,.list a:focus-visible .title{color:var(--brass)}
+.list a:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.num{font-family:var(--mono);font-size:.8rem;color:var(--ink-dim);font-variant-numeric:tabular-nums}
+.title{font-family:var(--display);font-size:1.6rem;line-height:1.1;transition:color .15s}
+.tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.tags span{font-family:var(--mono);font-size:.7rem;border:1px solid var(--rule);border-radius:3px;padding:2px 7px;white-space:nowrap;color:var(--ink-dim)}
+.sub{grid-column:2 / -1;font-size:.95rem;color:var(--ink-dim)}
+.soon{padding:16px 4px;color:var(--ink-dim);font-size:.95rem}
+footer{margin-top:56px;font-family:var(--mono);font-size:.72rem;color:var(--ink-dim);letter-spacing:.04em}
+@media (max-width:540px){
+  .pan{grid-template-columns:1fr;justify-items:start}
+  .list a{grid-template-columns:2rem 1fr}
+  .tags{grid-column:2;justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mark">learn<b>handpan</b>.com</div>
+  <h1>Play real songs on your handpan.</h1>
+  <p class="lede">Each song is written as sheet music with the pad number above every note, so you know which pad to hit and with which hand. Press play to hear it, then play along.</p>
+
+  <section class="pan" aria-label="How the pads are numbered">
+    <svg viewBox="0 0 160 160" role="img" aria-label="D Kurd 9 pad layout seen from above">
+      <circle cx="80" cy="80" r="76" fill="#3d3024"/>
+      <circle cx="80" cy="80" r="70" fill="none" stroke="#2a2018" stroke-width="2"/>
+      <g font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" text-anchor="middle" dominant-baseline="central">
+        <circle cx="80" cy="80" r="17" fill="#7e664a"/><text x="80" y="80" fill="#fdfcfa">D</text>
+        <!-- zigzag: odd numbers on the right, even on the left -->
+        <circle cx="80" cy="128" r="12" fill="#5a4733"/><text x="80" y="128" fill="#e9c88f">1</text>
+        <circle cx="46" cy="114" r="12" fill="#5a4733"/><text x="46" y="114" fill="#e9c88f">2</text>
+        <circle cx="114" cy="114" r="12" fill="#5a4733"/><text x="114" y="114" fill="#e9c88f">3</text>
+        <circle cx="32" cy="80" r="12" fill="#5a4733"/><text x="32" y="80" fill="#e9c88f">4</text>
+        <circle cx="128" cy="80" r="12" fill="#5a4733"/><text x="128" y="80" fill="#e9c88f">5</text>
+        <circle cx="46" cy="46" r="12" fill="#5a4733"/><text x="46" y="46" fill="#e9c88f">6</text>
+        <circle cx="114" cy="46" r="12" fill="#5a4733"/><text x="114" y="46" fill="#e9c88f">7</text>
+        <circle cx="80" cy="32" r="12" fill="#5a4733"/><text x="80" y="32" fill="#e9c88f">8</text>
+      </g>
+    </svg>
+    <div>
+      <h2>Reading the numbers</h2>
+      <p><code>D</code> is the ding in the centre. Pads <code>1</code> to <code>8</code> climb from the lowest note to the highest in a zigzag.</p>
+      <p>Even numbers sit on the left, so your left hand plays them. Odd numbers sit on the right, for your right hand.</p>
+    </div>
+  </section>
+
+  <section class="songs">
+    <h2>Songs</h2>
+    <ul class="list">
+      <li>
+        <a href="songs/ode-to-joy.html">
+          <span class="num">01</span>
+          <span class="title">Ode to Joy</span>
+          <span class="tags"><span>D Kurd 9</span><span>Beginner</span></span>
+          <span class="sub">Beethoven's melody, plus a second part with the ding on every bar.</span>
+        </a>
+      </li>
+    </ul>
+    <p class="soon">More songs on the way.</p>
+  </section>
+
+  <footer>learnhandpan.com</footer>
+</div>
+</body>
+</html>
