@@ -7,6 +7,7 @@ Source for **learnhandpan.com**: simple handpan songs written as sheet music, wi
 | # | Song | Scale | Level |
 |---|------|-------|-------|
 | 01 | [Ode to Joy](songs/ode-to-joy.html) | D Kurd 9 | Beginner |
+| 02 | [Ode to Joy (Hard)](songs/ode-to-joy-hard.html) | D Kurd 9 | Hard |
 
 ## How it works
 
