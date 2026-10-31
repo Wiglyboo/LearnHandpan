@@ -8,6 +8,9 @@ Source for **learnhandpan.com**: simple handpan songs written as sheet music, wi
 |---|------|-------|-------|
 | 01 | [Ode to Joy](songs/ode-to-joy.html) | D Kurd 9 | Beginner |
 | 02 | [Ode to Joy (Hard)](songs/ode-to-joy-hard.html) | D Kurd 9 | Hard |
+| 03 | [Twinkle, Twinkle, Little Star](songs/twinkle-twinkle.html) | D Kurd 9 | Beginner |
+| 04 | [Twinkle, Twinkle (Medium)](songs/twinkle-twinkle-medium.html) | D Kurd 9 | Medium |
+| 05 | [Twinkle, Twinkle (Hard)](songs/twinkle-twinkle-hard.html) | D Kurd 9 | Hard |
 
 ## How it works
 

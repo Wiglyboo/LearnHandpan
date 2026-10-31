@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Twinkle, Twinkle (Medium) · LearnHandpan</title>
+<meta name="description" content="A medium Twinkle, Twinkle for D Kurd 9 handpan: a tak between every note, then the ding on the first beat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=JetBrains+Mono:wght@400;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+/* Layout: a single engraved practice sheet on paper, legend and pad map above, practice steps below. Deliberately one light "paper" look. */
+:root{
+  --paper:#fdfcfa;
+  --desk:#e9e6e1;
+  --ink:#1b1a1d;
+  --ink-dim:#5f5a55;
+  --brass:#8a5a14;
+  --rule:#d8d3cc;
+  --display:"Gloock", Georgia, serif;
+  --body:"Newsreader", Georgia, serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.crumb{display:inline-block;margin-bottom:14px;font:400 .78rem var(--mono);letter-spacing:.06em;color:var(--ink-dim);text-decoration:none}
+.crumb:hover{color:var(--brass)}
+.wrap{max-width:960px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.sheet{background:var(--paper);border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 40px rgba(40,30,20,.10);padding:clamp(18px,4vw,48px)}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px;border-bottom:1px solid var(--rule);padding-bottom:18px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,7vw,3.4rem);line-height:1;margin:0;text-wrap:balance}
+.by{font-size:.95rem;color:var(--ink-dim);text-align:right}
+.by b{font-weight:500;color:var(--ink)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px 32px;padding-block:20px;border-bottom:1px solid var(--rule)}
+.meta h2,.practice h2{font-family:var(--mono);font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 8px}
+.pads{display:flex;flex-wrap:wrap;gap:6px}
+.pads span{font-family:var(--mono);font-size:.78rem;border:1px solid var(--rule);border-radius:3px;padding:3px 7px;white-space:nowrap}
+.pads b{color:var(--brass);font-weight:600}
+.legend{margin:0;padding:0;list-style:none;font-size:.95rem;display:grid;gap:4px}
+.legend code{font-family:var(--mono);font-size:.8rem;color:var(--brass);font-weight:600}
+#score{margin-top:12px;min-width:0}
+.player{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 8px);z-index:5;margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;
+  background:var(--ink);color:var(--paper);border-radius:6px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.play{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:4px;background:#e2b56b;color:var(--ink);font:600 .85rem var(--mono);padding:9px 16px;cursor:pointer}
+.play svg{width:14px;height:14px}
+.play:focus-visible,.player input:focus-visible{outline:2px solid #e2b56b;outline-offset:2px}
+.player label{display:inline-flex;align-items:center;gap:8px;font:400 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#cfc8bf}
+.player input[type=range]{width:110px;accent-color:#e2b56b}
+.player input[type=checkbox]{accent-color:#e2b56b;width:16px;height:16px}
+.player output{min-width:5.5em;color:var(--paper);font-variant-numeric:tabular-nums}
+.status{margin-left:auto;font:400 .72rem var(--mono);color:#cfc8bf;font-variant-numeric:tabular-nums}
+#score .abcjs-note.now path,#score .abcjs-note.now{fill:#c0392b}
+#score .abcjs-annotation.now{fill:#c0392b}
+@media (max-width:480px){.status{margin-left:0;width:100%}}
+#score svg{max-width:100%}
+.abcjs-annotation{fill:var(--brass)}
+.fallback{font-family:var(--mono);font-size:.8rem;white-space:pre;overflow-x:auto;background:#f4f2ee;padding:12px;border-radius:3px}
+.practice{margin-top:28px;border-top:1px solid var(--rule);padding-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px 36px}
+.practice ol{margin:0;padding-left:1.2em;display:grid;gap:6px;max-width:65ch}
+.practice p{margin:0;max-width:65ch}
+.practice strong{font-weight:500}
+@media (max-width:560px){.by{text-align:left}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <a class="crumb" href="../index.html">← learnhandpan.com</a>
+  <article class="sheet">
+    <header>
+      <h1>Twinkle, Twinkle <span style="color:var(--brass)">Medium</span></h1>
+      <div class="by"><b>Traditional</b> French tune<br>medium arrangement for D Kurd 9 handpan</div>
+    </header>
+
+    <section class="meta">
+      <div>
+        <h2>Pad numbers</h2>
+        <div class="pads">
+          <span><b>D</b> D3 ding</span><span><b>1</b> A3</span><span><b>2</b> B♭3</span><span><b>3</b> C4</span><span><b>4</b> D4</span>
+          <span><b>5</b> E4</span><span><b>6</b> F4</span><span><b>7</b> G4</span><span><b>8</b> A4</span>
+        </div>
+      </div>
+      <div>
+        <h2>How to read it</h2>
+        <ul class="legend">
+          <li>All numbers sit above the notes</li>
+          <li><strong>Upper row</strong>: left hand, plays the even pads (2 4 6 8)</li>
+          <li><strong>Lower row</strong>: right hand, plays the odd pads (1 3 5 7)</li>
+          <li><code>D</code> is the ding, <code>T</code> is a tak: tap the steel between pads with the hand its row shows. Taks are drawn as ✕ notes</li>
+          <li>Two numbers stacked: both hands at the same time</li>
+          <li>Section A repeats once, then play B, the same groove with the ding</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="player" role="group" aria-label="Playback">
+      <button class="play" id="playBtn" type="button"><svg viewBox="0 0 16 16" fill="currentColor"><path id="playIcon" d="M3 1.5v13l11-6.5z"/></svg><span id="playLabel">Play</span></button>
+      <label for="tempo">Tempo <input id="tempo" type="range" min="48" max="100" step="2" value="72"> <output id="tempoOut" for="tempo">72 bpm</output></label>
+      <label for="loop"><input id="loop" type="checkbox" checked> Repeat</label>
+      <span class="status" id="status">Ready · A twice, then B</span>
+    </div>
+    <div id="score" aria-label="Sheet music for the medium Twinkle, Twinkle arrangement with handpan pad numbers"></div>
+    <noscript><pre class="fallback">X:1
+M:4/4
+L:1/8
+K:C
+%%annotationfont JetBrains Mono 13
+%%partsfont Gloock 18
+%%staffsep 105
+P:A
+|:"^3"C "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^ "A "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^ "D "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^3"C "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^ "A "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^ "D "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b :|
+P:B
+"^D""^3"[D,C] "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^D"[D,A] "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^D"[D,F] "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^D"[D,D] "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^D""^7"[D,G] "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^D""^5"[D,E] "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^D""^7"[D,G] "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^D""^5"[D,E] "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^D""^3"[D,C] "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^D"[D,A] "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^D"[D,F] "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^D"[D,D] "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |]</pre></noscript>
+
+    <section class="practice">
+      <div>
+        <h2>Practice plan</h2>
+        <ol>
+          <li><strong>Learn the beginner version first.</strong> The melody is the same, so you should already know which pad each note is.</li>
+          <li><strong>Section A, the tak groove.</strong> Play a note, then a tak with the other hand: note, tak, note, tak. A right-hand pad (3, 5, 7) is followed by a left-hand tak. A left-hand pad (4, 6, 8) is followed by a right-hand tak.</li>
+          <li><strong>Keep the taks quiet</strong> and the notes strong, so the tune still sings. Say the pad numbers and let the taks stay soft.</li>
+          <li><strong>The long notes</strong> (the 7, the 4, and the closing 3) are one note and then two taks. Let that note ring while the other hand taps.</li>
+          <li><strong>Section B</strong> adds the ding on the first note of every bar, then the tak groove carries on. Odd number: left hand plays the ding. Even number: right hand plays it.</li>
+          <li>Goal tempo is 88 bpm. Raise the slider by 4 bpm once a line feels clean three times in a row.</li>
+        </ol>
+      </div>
+      <div>
+        <h2>Notes on this arrangement</h2>
+        <p>This version keeps the beginner melody on the beat and answers every note with a tak. It uses pads 3 to 8, the ding, and taks on the steel between the pads. Nothing moves up or down an octave.</p>
+      </div>
+    </section>
+  </article>
+</div>
+
+<script src="../assets/abcjs-basic-min.js"></script>
+<script>
+const ABC = `X:1
+M:4/4
+L:1/8
+K:C
+%%annotationfont JetBrains Mono 13
+%%partsfont Gloock 18
+%%staffsep 105
+P:A
+|:"^3"C "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^ "A "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^ "D "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^3"C "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^ "A "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^ "D "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b :|
+P:B
+"^D""^3"[D,C] "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^D"[D,A] "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^D"[D,F] "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^D"[D,D] "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^D""^7"[D,G] "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^D""^5"[D,E] "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^D""^7"[D,G] "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b | "^D""^5"[D,E] "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^D""^3"[D,C] "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b | "^8""^D"[D,A] "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^D"[D,F] "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b | "^4""^D"[D,D] "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |]`;
+const ABC_NARROW = `X:1
+M:4/4
+L:1/8
+K:C
+%%annotationfont JetBrains Mono 13
+%%partsfont Gloock 18
+%%staffsep 105
+P:A
+|:"^3"C "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b |
+"^8""^ "A "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b |
+"^4""^ "D "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b |
+"^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b |
+"^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^3"C "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b |
+"^8""^ "A "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b |
+"^4""^ "D "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b :|
+P:B
+"^D""^3"[D,C] "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b |
+"^8""^D"[D,A] "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^D"[D,F] "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b |
+"^4""^D"[D,D] "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^D""^7"[D,G] "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b |
+"^D""^5"[D,E] "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^D""^7"[D,G] "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^6""^ "F "^T"!style=x!b "^6""^ "F "^T"!style=x!b |
+"^D""^5"[D,E] "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b "^4""^ "D2 "^T"!style=x!b "^T"!style=x!b |
+"^D""^3"[D,C] "^T""^ "!style=x!b "^3"C "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b "^7"G "^T""^ "!style=x!b |
+"^8""^D"[D,A] "^T"!style=x!b "^8""^ "A "^T"!style=x!b "^7"G2 "^T""^ "!style=x!b "^T""^ "!style=x!b |
+"^6""^D"[D,F] "^T"!style=x!b "^6""^ "F "^T"!style=x!b "^5"E "^T""^ "!style=x!b "^5"E "^T""^ "!style=x!b |
+"^4""^D"[D,D] "^T"!style=x!b "^4""^ "D "^T"!style=x!b "^3"C2 "^T""^ "!style=x!b "^T""^ "!style=x!b |]`;
+const el = document.getElementById('score');
+let tune = null;
+function render(){
+  if (!window.ABCJS) return;
+  const w = el.clientWidth;
+  tune = ABCJS.renderAbc('score', w < 640 ? ABC_NARROW : ABC, {
+    add_classes: true,
+    staffwidth: Math.max(260, w - 24),
+    scale: w < 640 ? 1 : 1.1,
+    paddingleft: 0, paddingright: 0,
+    format: { titlefont: '"Gloock" 28', composerfont: '"Newsreader" 13', annotationfont: '"JetBrains Mono" 13 bold', partsfont: '"Gloock" 20', gchordfont: '"JetBrains Mono" 12' }
+  });
+  if (typeof playing !== 'undefined' && playing){ const fresh = buildEvents(); fresh.forEach((f,k) => { if (events[k]) events[k].elements = f.elements; }); }
+}
+/* ---------- Handpan synth (same voice as the digital handpan) ---------- */
+let ctx, bus, wet, noiseBuf;
+function initAudio(){
+  if (ctx){ if (ctx.state !== 'running') ctx.resume(); return; }
+  const AC = window.AudioContext || window.webkitAudioContext;
+  ctx = new AC({latencyHint:'interactive'});
+  const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -14; comp.ratio.value = 4;
+  const master = ctx.createGain(); master.gain.value = 0.85;
+  bus = ctx.createGain(); wet = ctx.createGain(); wet.gain.value = 0.4;
+  const verb = ctx.createConvolver(), len = ctx.sampleRate*3, buf = ctx.createBuffer(2, len, ctx.sampleRate);
+  for (let c=0;c<2;c++){ const d = buf.getChannelData(c); let lp = 0;
+    for (let i=0;i<len;i++){ const k = i/len; lp += (Math.random()*2-1 - lp)*(0.65 - 0.6*k); d[i] = lp*Math.pow(1-k, 2.6); } }
+  verb.buffer = buf; const tone = ctx.createBiquadFilter(); tone.type = 'lowpass'; tone.frequency.value = 5200;
+  bus.connect(master); bus.connect(wet); wet.connect(verb); verb.connect(tone); tone.connect(master);
+  master.connect(comp); comp.connect(ctx.destination);
+  noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+  const nd = noiseBuf.getChannelData(0); for (let i=0;i<nd.length;i++) nd[i] = Math.random()*2-1;
+}
+function partial(dest, t, f, a, att, dec){
+  const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.value = f;
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(a, t+att); g.gain.exponentialRampToValueAtTime(0.0001, t+dec);
+  o.connect(g); g.connect(dest); o.start(t); o.stop(t+dec+0.05); return o;
+}
+const live = [];
+function playTone(freq, t, vel, pan){
+  const out = ctx.createGain(); out.gain.value = 0.3*vel;
+  const p = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+  if (p){ p.pan.value = pan; out.connect(p); p.connect(bus); } else out.connect(bus);
+  const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.4;
+  lp.frequency.setValueAtTime(1400 + 5500*vel, t); lp.frequency.setTargetAtTime(Math.max(900, freq*4), t+0.02, 0.35); lp.connect(out);
+  const L = Math.pow(220/freq, 0.35), det = 0.25 + Math.random()*0.25;
+  [[1,1,.014,6.2*L],[1,.3,.02,5*L,det],[2,.48,.004,3.6*L],[2.0018,.12,.004,3*L],[3,.24,.003,2*L],[4.18,.06,.002,.7],[5.43,.035,.002,.35]]
+    .forEach(([m,a,att,dec,dd]) => live.push(partial(lp, t, freq*m + (dd||0), a, att, dec)));
+  const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  s.buffer = noiseBuf; f.type = 'bandpass'; f.frequency.value = Math.min(freq*7, 6500);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.3, t+0.0015); g.gain.exponentialRampToValueAtTime(0.0001, t+0.03);
+  s.connect(f); f.connect(g); g.connect(out); s.start(t); s.stop(t+0.08); live.push(s);
+}
+const midiHz = m => 440*Math.pow(2, (m-69)/12);
+const TAK = 83;   // tak is written as an x-note on B5
+function playTak(t, vel, pan){
+  const out = ctx.createGain(); out.gain.value = 0.5*vel;
+  const p = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+  if (p){ p.pan.value = pan; out.connect(p); p.connect(bus); } else out.connect(bus);
+  const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+  s.buffer = noiseBuf; f.type = 'bandpass'; f.frequency.value = 3100; f.Q.value = 0.9;
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.9, t+0.0015); g.gain.exponentialRampToValueAtTime(0.0001, t+0.035);
+  s.connect(f); f.connect(g); g.connect(out); s.start(t, Math.random()*0.5); s.stop(t+0.08); live.push(s);
+  const j = 1 + (Math.random()-0.5)*0.04;
+  [[1720,.18,.16],[2590,.14,.12],[3810,.10,.09],[5230,.06,.06]].forEach(([f2,a,d]) => live.push(partial(out, t, f2*j, a, 0.001, d)));
+}
+
+/* ---------- Player ---------- */
+const playBtn = document.getElementById('playBtn'), playLabel = document.getElementById('playLabel'), playIcon = document.getElementById('playIcon');
+const tempoEl = document.getElementById('tempo'), tempoOut = document.getElementById('tempoOut'), loopEl = document.getElementById('loop'), statusEl = document.getElementById('status');
+let playing = false, startAt = 0, events = [], totalSec = 0, raf = 0, lit = [], timer = 0, lastIdx = -1;
+tempoEl.addEventListener('input', () => { tempoOut.textContent = tempoEl.value + ' bpm'; if (playing){ stop(); start(); } });
+
+function buildEvents(){
+  const v = tune && tune[0]; if (!v) return [];
+  try { v.setUpAudio({ qpm: +tempoEl.value }); } catch(e){}
+  const tc = new ABCJS.TimingCallbacks(v, { qpm: +tempoEl.value });
+  return (tc.noteTimings || []).filter(e => e.type === 'event' && e.midiPitches && e.midiPitches.length)
+    .map(e => ({ t: e.milliseconds/1000, pitches: e.midiPitches.map(m => m.pitch), elements: e.elements }));
+}
+function clearLit(){ lit.forEach(n => n.classList.remove('now')); lit = []; }
+function light(ev){
+  clearLit();
+  (ev.elements || []).flat().forEach(n => { if (n && n.classList){ n.classList.add('now'); lit.push(n); } });
+  // the number above each note belongs to the same column; light those too
+  const first = (ev.elements || []).flat()[0];
+  if (first && first.parentNode){
+    const box = first.getBBox ? first.getBBox() : null;
+    if (box) el.querySelectorAll('.abcjs-annotation').forEach(a => {
+      const b = a.getBBox(); if (Math.abs((b.x + b.width/2) - (box.x + box.width/2)) < 9 && b.y < box.y && box.y - b.y < 120){ a.classList.add('now'); lit.push(a); }
+    });
+    const r = first.getBoundingClientRect();
+    if (r.top < 90 || r.bottom > innerHeight - 40) first.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }
+}
+function start(){
+  initAudio();
+  events = buildEvents(); if (!events.length) return;
+  const beat = 60/(+tempoEl.value);
+  totalSec = events[events.length-1].t + beat*2;
+  startAt = ctx.currentTime + 0.12;
+  events.forEach((ev, i) => ev.pitches.forEach(p => p === TAK ? playTak(startAt + ev.t, 0.8, i % 2 ? 0.3 : -0.3) : playTone(midiHz(p), startAt + ev.t, p < 52 ? 0.7 : 0.82, p < 52 ? 0 : (p - 64)/30)));
+  playing = true; lastIdx = -1;
+  playBtn.setAttribute('aria-pressed', 'true'); playLabel.textContent = 'Stop'; playIcon.setAttribute('d', 'M3 3h10v10H3z');
+  tick();
+  timer = setTimeout(() => { if (!playing) return; if (loopEl.checked){ playing = false; start(); } else stop(true); }, totalSec*1000 + 120);
+}
+function stop(finished){
+  playing = false; clearTimeout(timer); cancelAnimationFrame(raf); clearLit();
+  const now = ctx ? ctx.currentTime : 0;
+  live.splice(0).forEach(n => { try { n.stop(now + 0.05); } catch(e){} });
+  playBtn.setAttribute('aria-pressed', 'false'); playLabel.textContent = 'Play'; playIcon.setAttribute('d', 'M3 1.5v13l11-6.5z');
+  statusEl.textContent = finished ? 'Finished · press Play to go again' : 'Stopped';
+}
+function tick(){
+  if (!playing) return;
+  const now = ctx.currentTime - startAt;
+  let i = lastIdx;
+  while (i+1 < events.length && events[i+1].t <= now) i++;
+  if (i !== lastIdx && i >= 0){
+    lastIdx = i; light(events[i]);
+    const ap = events.length; statusEl.textContent = `Note ${i+1} of ${ap}` + (loopEl.checked ? ' · repeating' : '');
+  }
+  raf = requestAnimationFrame(tick);
+}
+playBtn.addEventListener('click', () => playing ? stop() : start());
+document.addEventListener('keydown', e => { if (e.code === 'Space' && e.target === document.body){ e.preventDefault(); playing ? stop() : start(); } });
+
+let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(render, 120); }).observe(el);
+// If the bundled library is missing (file opened outside the site), load it from the web, then draw.
+function boot(){
+  if (window.ABCJS){ render(); return; }
+  el.innerHTML = '<p style="font-family:var(--mono);font-size:.8rem;color:var(--ink-dim)">Loading sheet music…</p>';
+  const sc = document.createElement('script');
+  sc.src = 'https://cdn.jsdelivr.net/npm/abcjs@6.6.4/dist/abcjs-basic-min.js';
+  sc.onload = render;
+  sc.onerror = () => { el.innerHTML = '<p style="font-family:var(--mono);font-size:.8rem">Couldn\'t load the sheet music. Check your connection, or open this page from the LearnHandpan site.</p>'; };
+  document.head.appendChild(sc);
+}
+document.fonts && document.fonts.ready.then(() => window.ABCJS && render());
+boot();
+</script>
+
+</body>
+</html>
